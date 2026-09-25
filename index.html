@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melodia — Sua Música, Sua Forma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fundo: '#12101B',
+            superficie: '#1E1B2E',
+            'superficie-clara': '#262239',
+            borda: '#33304A',
+            primaria: '#FF3D68',
+            'primaria-escura': '#D92B54',
+            secundaria: '#00E5A0',
+            texto: '#F5F3FA',
+            'texto-suave': '#A9A3BF'
+          },
+          fontFamily: {
+            titulo: ['Space Grotesk', 'sans-serif'],
+            texto: ['Manrope', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-fundo text-texto font-texto leading-relaxed antialiased">
+
+  <header
+    class="cabecalho fixed left-0 top-0 z-50 w-full border-b border-transparent bg-transparent transition duration-300"
+    id="cabecalho">
+
+    <div class="mx-auto flex w-full max-w-[1180px] items-center justify-between px-6 py-[1.1rem]">
+
+      <a href="#topo" class="flex items-center gap-2 font-titulo text-[1.3rem] font-bold">
+        <i class="fa-solid fa-wave-square text-primaria"></i>
+        Melodia
+      </a>
+
+      <nav class="cabecalho__nav hidden items-center gap-8 md:flex" id="menuNav">
+
+        <a href="#beneficios"
+          class="cabecalho__link text-[0.95rem] font-medium text-texto-suave transition duration-200 hover:text-texto">
+          Benefícios
+        </a>
+
+        <a href="#funcionalidades"
+          class="cabecalho__link text-[0.95rem] font-medium text-texto-suave transition duration-200 hover:text-texto">
+          Funcionalidades
+        </a>
+
+        <a href="#depoimentos"
+          class="cabecalho__link text-[0.95rem] font-medium text-texto-suave transition duration-200 hover:text-texto">
+          Depoimentos
+        </a>
+
+        <a href="#contato"
+          class="cabecalho__link text-[0.95rem] font-medium text-texto-suave transition duration-200 hover:text-texto">
+          Contato
+        </a>
+      </nav>
+
+      <a href="#contato"
+        class="hidden items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primaria px-5 py-2.5 font-titulo text-sm font-semibold text-white shadow-[0_10px_30px_-8px_rgba(255,61,104,0.55)] transition duration-200 hover:-translate-y-0.5 hover:bg-primaria-escura focus-visible:outline-2 focus-visible:outline-secundaria sm:inline-flex">
+        Ouvir Agora
+      </a>
+
+      <button class="cabecalho__botao-menu block text-[1.4rem] text-texto md:hidden" id="botaoMenu"
+        aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Menu mobile -->
+    <nav id="menuMobile" class="hidden border-b border-borda bg-superficie px-6 py-6 md:hidden">
+
+      <div class="mx-auto flex max-w-[1180px] flex-col gap-5">
+        <a href="#beneficios" class="cabecalho__link text-texto-suave transition hover:text-texto">Benefícios</a>
+        <a href="#funcionalidades"
+          class="cabecalho__link text-texto-suave transition hover:text-texto">Funcionalidades</a>
+        <a href="#depoimentos" class="cabecalho__link text-texto-suave transition hover:text-texto">Depoimentos</a>
+        <a href="#contato" class="cabecalho__link text-texto-suave transition hover:text-texto">Contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="overflow-hidden px-6 pb-28 pt-32 sm:pt-36" id="topo">
+
+      <div class="mx-auto grid w-full max-w-[1180px] grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+
+        <div class="hero__texto flex flex-col items-center text-center lg:block lg:text-left">
+
+          <p
+            class="mb-6 inline-flex items-center gap-2 rounded-full bg-secundaria/10 px-4 py-2 text-sm font-semibold text-secundaria">
+            <i class="fa-solid fa-music"></i>
+            Novo jeito de ouvir música
+          </p>
+
+          <h1 class="mb-6 max-w-[14ch] font-titulo text-[clamp(2.4rem,5vw,3.6rem)] font-bold leading-tight">
+            Melodia: sua música, sua forma
+          </h1>
+
+          <p class="mb-9 max-w-[42ch] text-[1.1rem] text-texto-suave">
+            Um app de streaming pensado para quem vive de descobertas:
+            som em alta qualidade, playlists moldadas ao seu gosto e novos
+            artistas todos os dias, numa interface simples de usar.
+          </p>
+
+          <div class="mb-12 flex flex-wrap justify-center gap-4 lg:justify-start">
+
+            <a href="#contato"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primaria px-7 py-3.5 font-titulo font-semibold text-white shadow-[0_10px_30px_-8px_rgba(255,61,104,0.55)] transition duration-200 hover:-translate-y-0.5 hover:bg-primaria-escura active:translate-y-0 focus-visible:outline-2 focus-visible:outline-secundaria">
+              <i class="fa-solid fa-play"></i>
+              Ouvir Agora
+            </a>
+
+            <a href="#funcionalidades"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border-[1.5px] border-borda bg-transparent px-7 py-3.5 font-titulo font-semibold text-texto transition duration-200 hover:border-secundaria hover:text-secundaria focus-visible:outline-2 focus-visible:outline-secundaria">
+              Ver funcionalidades
+            </a>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-8 sm:gap-10 lg:justify-start">
+
+            <div class="flex flex-col gap-1">
+              <strong class="font-titulo text-[1.4rem]">320kbps</strong>
+              <span class="text-sm text-texto-suave">áudio em alta definição</span>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <strong class="font-titulo text-[1.4rem]">+40 mil</strong>
+              <span class="text-sm text-texto-suave">artistas independentes</span>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <strong class="font-titulo text-[1.4rem]">4.9/5</strong>
+              <span class="text-sm text-texto-suave">avaliação dos usuários</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+
+          <div
+            class="relative w-full max-w-[340px] rounded-3xl border border-borda bg-gradient-to-br from-superficie-clara to-superficie p-8 text-center shadow-xl transition duration-500 hover:-translate-y-2 hover:shadow-2xl"
+            id="playerDemo">
+
+            <div
+              class="mx-auto mb-6 flex h-[140px] w-[140px] items-center justify-center rounded-2xl bg-gradient-to-br from-primaria to-[#FF9A5A] text-[2.5rem] text-white/90">
+              <i class="fa-solid fa-headphones-simple"></i>
+            </div>
+
+            <p class="font-titulo text-[1.1rem] font-semibold">Noite de Neon</p>
+            <p class="mb-6 text-sm text-texto-suave">Lua Elétrica</p>
+
+            <div class="mb-6 flex h-10 items-end justify-center gap-1" aria-hidden="true">
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+              <span class="barra-onda"></span>
+            </div>
+
+            <button
+              class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primaria text-lg text-white transition duration-200 hover:scale-110 hover:bg-primaria-escura focus-visible:outline-2 focus-visible:outline-secundaria"
+              id="botaoPlayDemo" aria-label="Tocar prévia">
+              <i class="fa-solid fa-play"></i>
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="border-y border-borda bg-superficie px-6 py-28" id="beneficios">
+
+      <div class="mx-auto w-full max-w-[1180px]">
+
+        <p class="mb-3 font-titulo text-[0.95rem] font-semibold text-secundaria">
+          Por que o Melodia
+        </p>
+
+        <h2 class="mb-12 max-w-[20ch] font-titulo text-[clamp(1.8rem,3vw,2.6rem)] font-semibold leading-tight">
+          Feito para quem leva música a sério
+        </h2>
+
+        <div class="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
+
+          <div
+            class="group rounded-2xl border border-borda bg-fundo p-7 transition duration-300 hover:-translate-y-2 hover:border-secundaria hover:shadow-xl">
+
+            <div
+              class="mb-5 flex h-[52px] w-[52px] items-center justify-center rounded-[10px] bg-primaria/10 text-xl text-primaria transition duration-300 group-hover:bg-primaria group-hover:text-white">
+              <i class="fa-solid fa-volume-high"></i>
+            </div>
+
+            <h3 class="mb-2 font-titulo text-lg font-semibold group-hover:text-primaria transition">
+              Qualidade de som superior
+            </h3>
+
+            <p class="text-sm text-texto-suave">
+              Áudio em alta definição que revela detalhes que outros apps deixam passar.
+            </p>
+          </div>
+
+
+          <div
+            class="group rounded-2xl border border-borda bg-fundo p-7 transition duration-300 hover:-translate-y-2 hover:border-secundaria hover:shadow-xl">
+
+            <div
+              class="mb-5 flex h-[52px] w-[52px] items-center justify-center rounded-[10px] bg-primaria/10 text-xl text-primaria transition duration-300 group-hover:bg-primaria group-hover:text-white">
+              <i class="fa-solid fa-list"></i>
+            </div>
+
+            <h3 class="mb-2 font-titulo text-lg font-semibold group-hover:text-primaria transition">
+              Playlists personalizadas
+            </h3>
+
+            <p class="text-sm text-texto-suave">
+              Monte combinações do seu jeito ou deixe o Melodia sugerir a trilha certa para cada momento.
+            </p>
+          </div>
+
+
+          <div
+            class="group rounded-2xl border border-borda bg-fundo p-7 transition duration-300 hover:-translate-y-2 hover:border-secundaria hover:shadow-xl">
+
+            <div
+              class="mb-5 flex h-[52px] w-[52px] items-center justify-center rounded-[10px] bg-primaria/10 text-xl text-primaria transition duration-300 group-hover:bg-primaria group-hover:text-white">
+              <i class="fa-solid fa-compass"></i>
+            </div>
+
+            <h3 class="mb-2 font-titulo text-lg font-semibold group-hover:text-primaria transition">
+              Descoberta de novos artistas
+            </h3>
+
+            <p class="text-sm text-texto-suave">
+              Conheça vozes novas antes de todo mundo, de qualquer estilo e qualquer lugar.
+            </p>
+          </div>
+
+
+          <div
+            class="group rounded-2xl border border-borda bg-fundo p-7 transition duration-300 hover:-translate-y-2 hover:border-secundaria hover:shadow-xl">
+
+            <div
+              class="mb-5 flex h-[52px] w-[52px] items-center justify-center rounded-[10px] bg-primaria/10 text-xl text-primaria transition duration-300 group-hover:bg-primaria group-hover:text-white">
+              <i class="fa-solid fa-gauge-high"></i>
+            </div>
+
+            <h3 class="mb-2 font-titulo text-lg font-semibold group-hover:text-primaria transition">
+              Interface intuitiva
+            </h3>
+
+            <p class="text-sm text-texto-suave">
+              Tudo o que você precisa a um toque de distância, sem menus complicados.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="px-6 py-28" id="funcionalidades">
+
+      <div class="mx-auto w-full max-w-[1180px]">
+
+        <p class="mb-3 font-titulo text-[0.95rem] font-semibold text-secundaria">
+          Funcionalidades
+        </p>
+
+        <h2 class="mb-12 max-w-[20ch] font-titulo text-[clamp(1.8rem,3vw,2.6rem)] font-semibold leading-tight">
+          Tudo que cabe na sua rotina musical
+        </h2>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+          <article
+            class="group rounded-2xl border border-borda bg-superficie p-8 transition duration-300 hover:-translate-y-1 hover:border-secundaria hover:shadow-xl">
+            <i
+              class="fa-solid fa-wand-magic-sparkles mb-5 block text-2xl text-secundaria transition group-hover:scale-110"></i>
+            <h3 class="mb-2 font-titulo text-[1.05rem] font-semibold group-hover:text-secundaria transition">Playlists
+              inteligentes</h3>
+            <p class="text-[0.92rem] text-texto-suave">
+              Criadas a partir do que você mais ouve, sempre atualizadas.
+            </p>
+          </article>
+
+          <article
+            class="group rounded-2xl border border-borda bg-superficie p-8 transition duration-300 hover:-translate-y-1 hover:border-secundaria hover:shadow-xl">
+            <i class="fa-solid fa-download mb-5 block text-2xl text-secundaria transition group-hover:scale-110"></i>
+            <h3 class="mb-2 font-titulo text-[1.05rem] font-semibold group-hover:text-secundaria transition">Modo
+              offline</h3>
+            <p class="text-[0.92rem] text-texto-suave">
+              Baixe suas músicas favoritas e ouça sem depender de internet.
+            </p>
+          </article>
+
+          <article
+            class="group rounded-2xl border border-borda bg-superficie p-8 transition duration-300 hover:-translate-y-1 hover:border-secundaria hover:shadow-xl">
+            <i class="fa-solid fa-users mb-5 block text-2xl text-secundaria transition group-hover:scale-110"></i>
+            <h3 class="mb-2 font-titulo text-[1.05rem] font-semibold group-hover:text-secundaria transition">Sessões em
+              grupo</h3>
+            <p class="text-[0.92rem] text-texto-suave">
+              Ouça junto com os amigos em tempo real, cada um de um lugar diferente.
+            </p>
+          </article>
+
+          <article
+            class="group rounded-2xl border border-borda bg-superficie p-8 transition duration-300 hover:-translate-y-1 hover:border-secundaria hover:shadow-xl">
+            <i class="fa-solid fa-chart-line mb-5 block text-2xl text-secundaria transition group-hover:scale-110"></i>
+            <h3 class="mb-2 font-titulo text-[1.05rem] font-semibold group-hover:text-secundaria transition">Seu ano em
+              música</h3>
+            <p class="text-[0.92rem] text-texto-suave">
+              Relatórios sobre seus artistas, gêneros e faixas mais tocadas.
+            </p>
+          </article>
+
+          <article
+            class="group rounded-2xl border border-borda bg-superficie p-8 transition duration-300 hover:-translate-y-1 hover:border-secundaria hover:shadow-xl">
+            <i class="fa-solid fa-microphone mb-5 block text-2xl text-secundaria transition group-hover:scale-110"></i>
+            <h3 class="mb-2 font-titulo text-[1.05rem] font-semibold group-hover:text-secundaria transition">Letras em
+              tempo real</h3>
+            <p class="text-[0.92rem] text-texto-suave">
+              Acompanhe a letra de cada música enquanto ela toca.
+            </p>
+          </article>
+
+          <article
+            class="group rounded-2xl border border-borda bg-superficie p-8 transition duration-300 hover:-translate-y-1 hover:border-secundaria hover:shadow-xl">
+            <i class="fa-solid fa-podcast mb-5 block text-2xl text-secundaria transition group-hover:scale-110"></i>
+            <h3 class="mb-2 font-titulo text-[1.05rem] font-semibold group-hover:text-secundaria transition">Rádios por
+              clima</h3>
+            <p class="text-[0.92rem] text-texto-suave">
+              Estações que se ajustam ao seu humor: foco, treino, descanso e mais.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="border-y border-borda bg-superficie px-6 py-28" id="depoimentos">
+
+      <div class="mx-auto w-full max-w-[1180px]">
+
+        <p class="mb-3 font-titulo text-[0.95rem] font-semibold text-secundaria">
+          Depoimentos
+        </p>
+
+        <h2 class="mb-12 max-w-[20ch] font-titulo text-[clamp(1.8rem,3vw,2.6rem)] font-semibold leading-tight">
+          Quem usa, recomenda
+        </h2>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+
+          <blockquote
+            class="flex flex-col gap-6 rounded-2xl border border-borda bg-fundo p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <p class="italic text-[0.98rem] text-texto">
+              "Descobri mais artistas novos em um mês de Melodia do que em anos usando outros apps. As sugestões
+              realmente combinam comigo."
+            </p>
+
+            <footer class="mt-auto flex items-center gap-3">
+              <img src="./img/download.jpg" alt="Foto de perfil de Olavo" class="h-11 w-11 rounded-full object-cover">
+              <div>
+                <p class="text-sm font-semibold">Olavo</p>
+                <p class="text-xs text-texto-suave">Ouvinte desde 2023</p>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote
+            class="flex flex-col gap-6 rounded-2xl border border-borda bg-fundo p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <p class="italic text-[0.98rem] text-texto">
+              "A qualidade do som é nitidamente melhor. Uso fone bom e a diferença salta aos ouvidos logo na primeira
+              faixa."
+            </p>
+
+            <footer class="mt-auto flex items-center gap-3">
+              <img src="./img/emanuel.webp" alt="Foto de perfil de Emanuel Gomes"
+                class="h-11 w-11 rounded-full object-cover">
+              <div>
+                <p class="text-sm font-semibold">Emanuel Gomes</p>
+                <p class="text-xs text-texto-suave">Produtor musical</p>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote
+            class="flex flex-col gap-6 rounded-2xl border border-borda bg-fundo p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <p class="italic text-[0.98rem] text-texto">
+              "O app é tão simples que minha mãe usa sem ajuda. E as playlists automáticas viraram a trilha sonora da
+              minha semana."
+            </p>
+
+            <footer class="mt-auto flex items-center gap-3">
+              <img src="./img/ale.webp" alt="Foto de perfil de Alexandre" class="h-11 w-11 rounded-full object-cover">
+              <div>
+                <p class="text-sm font-semibold">Alexandre</p>
+                <p class="text-xs text-texto-suave">Estudante</p>
+              </div>
+            </footer>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="px-6 py-28" id="contato">
+
+      <div class="mx-auto grid w-full max-w-[1180px] grid-cols-1 items-center gap-12 lg:grid-cols-2">
+
+        <div>
+          <p class="mb-3 font-titulo text-[0.95rem] font-semibold text-secundaria">
+            Fique por dentro
+          </p>
+
+          <h2 class="mb-6 max-w-[20ch] font-titulo text-[clamp(1.8rem,3vw,2.6rem)] font-semibold leading-tight">
+            Receba novidades e lançamentos do Melodia
+          </h2>
+
+          <p class="max-w-[40ch] text-texto-suave">
+            Deixe seu e-mail e seja o primeiro a saber sobre novas funcionalidades,
+            playlists exclusivas e o lançamento oficial do app.
+          </p>
+        </div>
+
+        <form class="flex flex-col gap-5 rounded-3xl border border-borda bg-superficie p-6 sm:p-8"
+          id="formularioContato">
+
+          <div class="flex flex-col gap-1.5">
+            <label for="nome" class="font-texto text-sm font-semibold text-texto-suave">
+              Nome
+            </label>
+
+            <input type="text" id="nome" name="nome"
+              class="w-full rounded-[10px] border border-borda bg-fundo px-4 py-3 text-texto placeholder:text-[#6b6785] transition focus:border-secundaria focus:outline-none focus:ring-2 focus:ring-secundaria/30"
+              placeholder="Como podemos te chamar?" required>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="email" class="font-texto text-sm font-semibold text-texto-suave">
+              E-mail
+            </label>
+
+            <input type="email" id="email" name="email"
+              class="w-full rounded-[10px] border border-borda bg-fundo px-4 py-3 text-texto placeholder:text-[#6b6785] transition focus:border-secundaria focus:outline-none focus:ring-2 focus:ring-secundaria/30"
+              placeholder="voce@email.com" required>
+          </div>
+
+          <button type="submit"
+            class="mt-2 w-full rounded-full bg-primaria px-7 py-3.5 font-titulo font-semibold text-white shadow-[0_10px_30px_-8px_rgba(255,61,104,0.55)] transition duration-300 hover:-translate-y-0.5 hover:bg-primaria-escura active:translate-y-0 focus-visible:outline-2 focus-visible:outline-secundaria">
+            Quero ser avisado
+          </button>
+
+          <p class="min-h-[1.2rem] text-sm text-secundaria" id="mensagemFormulario" aria-live="polite">
+          </p>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="border-t border-borda bg-superficie px-6 pt-16">
+
+    <div
+      class="mx-auto grid w-full max-w-[1180px] grid-cols-1 gap-8 pb-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+
+      <div class="flex flex-col gap-3">
+
+        <a href="#topo" class="flex items-center gap-2 font-titulo text-[1.3rem] font-bold">
+          <i class="fa-solid fa-wave-square text-primaria"></i>
+          Melodia
+        </a>
+
+        <p class="max-w-[26ch] text-sm text-texto-suave">
+          Sua música, sua forma. Descubra, ouça e compartilhe.
+        </p>
+
+        <div class="mt-2 flex gap-4 text-xl">
+
+          <a href="#" aria-label="Instagram do Melodia" class="text-texto-suave transition hover:text-primaria">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="#" aria-label="TikTok do Melodia" class="text-texto-suave transition hover:text-primaria">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+
+          <a href="#" aria-label="X do Melodia" class="text-texto-suave transition hover:text-primaria">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+
+          <a href="#" aria-label="YouTube do Melodia" class="text-texto-suave transition hover:text-primaria">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+
+        </div>
+      </div>
+
+
+      <div class="flex flex-col gap-3">
+        <p class="mb-1 font-titulo font-semibold">Produto</p>
+        <a href="#beneficios" class="text-sm text-texto-suave transition hover:text-texto">Benefícios</a>
+        <a href="#funcionalidades" class="text-sm text-texto-suave transition hover:text-texto">Funcionalidades</a>
+        <a href="#depoimentos" class="text-sm text-texto-suave transition hover:text-texto">Depoimentos</a>
+      </div>
+
+
+      <div class="flex flex-col gap-3">
+        <p class="mb-1 font-titulo font-semibold">Empresa</p>
+        <a href="#" class="text-sm text-texto-suave transition hover:text-texto">Sobre nós</a>
+        <a href="#" class="text-sm text-texto-suave transition hover:text-texto">Carreiras</a>
+        <a href="#" class="text-sm text-texto-suave transition hover:text-texto">Imprensa</a>
+      </div>
+
+
+      <div class="flex flex-col gap-3">
+        <p class="mb-1 font-titulo font-semibold">Contato</p>
+        <a href="mailto:contato@melodia.app"
+          class="text-sm text-texto-suave transition hover:text-texto">contato@melodia.app</a>
+        <a href="#" class="text-sm text-texto-suave transition hover:text-texto">Política de privacidade</a>
+        <a href="#" class="text-sm text-texto-suave transition hover:text-texto">Termos de uso</a>
+      </div>
+
+    </div>
+
+    <div class="mx-auto w-full max-w-[1180px] border-t border-borda py-6 text-center text-sm text-texto-suave">
+      <p>&copy; 2026 Melodia. Todos os direitos reservados.</p>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
