@@ -85,7 +85,6 @@
       </button>
     </div>
 
-    <!-- Menu mobile -->
     <nav id="menuMobile" class="hidden border-b border-borda bg-superficie px-6 py-6 md:hidden">
 
       <div class="mx-auto flex max-w-[1180px] flex-col gap-5">
@@ -156,44 +155,167 @@
           </div>
         </div>
 
-        <div class="flex justify-center">
+        <div class="flex flex-col items-center gap-5">
 
-          <div
-            class="relative w-full max-w-[340px] rounded-3xl border border-borda bg-gradient-to-br from-superficie-clara to-superficie p-8 text-center shadow-xl transition duration-500 hover:-translate-y-2 hover:shadow-2xl"
-            id="playerDemo">
+          <p
+            class="inline-flex items-center gap-2 rounded-full bg-primaria/10 px-4 py-2 text-sm font-semibold text-primaria">
+            <i class="fa-solid fa-fire"></i>
+            Mais escutadas
+          </p>
 
-            <div
-              class="mx-auto mb-6 flex h-[140px] w-[140px] items-center justify-center rounded-2xl bg-gradient-to-br from-primaria to-[#FF9A5A] text-[2.5rem] text-white/90">
-              <i class="fa-solid fa-headphones-simple"></i>
+          <div class="relative w-full max-w-[340px]">
+
+            <div class="overflow-hidden rounded-3xl">
+              <div class="flex transition-transform duration-500 ease-out" id="trilhoCarrossel">
+
+                <!-- Slide 1 -->
+                <div class="w-full shrink-0 px-1">
+                  <article
+                    class="cartao-player relative rounded-3xl border border-borda bg-gradient-to-br from-superficie-clara to-superficie p-8 text-center shadow-xl transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+
+                    <div
+                      class="mx-auto mb-6 flex h-[140px] w-[140px] items-center justify-center rounded-2xl bg-gradient-to-br from-primaria to-[#FF9A5A] text-[2.5rem] text-white/90">
+                      <i class="fa-solid fa-headphones-simple"></i>
+                    </div>
+
+                    <p class="font-titulo text-[1.1rem] font-semibold">Noite de Neon</p>
+                    <p class="mb-6 text-sm text-texto-suave">Lua Elétrica</p>
+
+                    <div class="mb-6 flex h-10 items-end justify-center gap-1" aria-hidden="true">
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                    </div>
+
+                    <button
+                      class="botao-tocar mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primaria text-lg text-white transition duration-200 hover:scale-110 hover:bg-primaria-escura focus-visible:outline-2 focus-visible:outline-secundaria"
+                      aria-label="Tocar prévia de Noite de Neon">
+                      <i class="fa-solid fa-play"></i>
+                    </button>
+
+                    <audio class="audio-demo" preload="none" loop>
+                      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    </audio>
+
+                  </article>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="w-full shrink-0 px-1">
+                  <article
+                    class="cartao-player relative rounded-3xl border border-borda bg-gradient-to-br from-superficie-clara to-superficie p-8 text-center shadow-xl transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+
+                    <div
+                      class="mx-auto mb-6 flex h-[140px] w-[140px] items-center justify-center rounded-2xl bg-gradient-to-br from-primaria to-[#FF9A5A] text-[2.5rem] text-white/90">
+                      <i class="fa-solid fa-headphones-simple"></i>
+                    </div>
+
+                    <p class="font-titulo text-[1.1rem] font-semibold">Guitarra Humana</p>
+                    <p class="mb-6 text-sm text-texto-suave">Tonho</p>
+
+                    <div class="mb-6 flex h-10 items-end justify-center gap-1" aria-hidden="true">
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                    </div>
+
+                    <button
+                      class="botao-tocar mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primaria text-lg text-white transition duration-200 hover:scale-110 hover:bg-primaria-escura focus-visible:outline-2 focus-visible:outline-secundaria"
+                      aria-label="Tocar prévia de Guitarra Humana">
+                      <i class="fa-solid fa-play"></i>
+                    </button>
+
+                    <audio class="audio-demo" preload="none" loop>
+                      <source src="./audio/guitarra-humana.ogg" type="audio/mpeg">
+                    </audio>
+
+                  </article>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="w-full shrink-0 px-1">
+                  <article
+                    class="cartao-player relative rounded-3xl border border-borda bg-gradient-to-br from-superficie-clara to-superficie p-8 text-center shadow-xl transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+
+                    <div
+                      class="mx-auto mb-6 flex h-[140px] w-[140px] items-center justify-center rounded-2xl bg-gradient-to-br from-primaria to-[#FF9A5A] text-[2.5rem] text-white/90">
+                      <i class="fa-solid fa-headphones-simple"></i>
+                    </div>
+
+                    <p class="font-titulo text-[1.1rem] font-semibold">Tropa de Elite</p>
+                    <p class="mb-6 text-sm text-texto-suave">Tihuana</p>
+
+                    <div class="mb-6 flex h-10 items-end justify-center gap-1" aria-hidden="true">
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                      <span class="barra-onda"></span>
+                    </div>
+
+                    <button
+                      class="botao-tocar mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primaria text-lg text-white transition duration-200 hover:scale-110 hover:bg-primaria-escura focus-visible:outline-2 focus-visible:outline-secundaria"
+                      aria-label="Tocar prévia de Monster">
+                      <i class="fa-solid fa-play"></i>
+                    </button>
+
+                    <audio class="audio-demo" preload="none" loop>
+                      <source src="./audio/tropa.mpeg" type="audio/mpeg">
+                    </audio>
+
+                  </article>
+                </div>
+
+              </div>
             </div>
 
-            <p class="font-titulo text-[1.1rem] font-semibold">Noite de Neon</p>
-            <p class="mb-6 text-sm text-texto-suave">Lua Elétrica</p>
+            <button id="setaAnterior" aria-label="Música anterior"
+              class="absolute left-[-14px] top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-borda bg-superficie text-texto-suave transition hover:border-secundaria hover:text-texto focus-visible:outline-2 focus-visible:outline-secundaria">
+              <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
 
-            <div class="mb-6 flex h-10 items-end justify-center gap-1" aria-hidden="true">
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-              <span class="barra-onda"></span>
-            </div>
-
-            <button
-              class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primaria text-lg text-white transition duration-200 hover:scale-110 hover:bg-primaria-escura focus-visible:outline-2 focus-visible:outline-secundaria"
-              id="botaoPlayDemo" aria-label="Tocar prévia">
-              <i class="fa-solid fa-play"></i>
+            <button id="setaProxima" aria-label="Próxima música"
+              class="absolute right-[-14px] top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-borda bg-superficie text-texto-suave transition hover:border-secundaria hover:text-texto focus-visible:outline-2 focus-visible:outline-secundaria">
+              <i class="fa-solid fa-chevron-right text-sm"></i>
             </button>
 
           </div>
+
+          <div class="flex items-center gap-2" id="dotsCarrossel" role="tablist" aria-label="Selecionar música">
+            <button class="h-2 w-2 rounded-full bg-secundaria transition" data-dot="0" aria-label="Música 1"
+              aria-selected="true"></button>
+            <button class="h-2 w-2 rounded-full bg-borda transition" data-dot="1" aria-label="Música 2"
+              aria-selected="false"></button>
+            <button class="h-2 w-2 rounded-full bg-borda transition" data-dot="2" aria-label="Música 3"
+              aria-selected="false"></button>
+          </div>
+
+          <p class="min-h-[1rem] text-xs text-texto-suave" id="statusAudioDemo"></p>
+
         </div>
 
       </div>
     </section>
+
 
 
     <section class="border-y border-borda bg-superficie px-6 py-28" id="beneficios">
@@ -421,10 +543,10 @@
             </p>
 
             <footer class="mt-auto flex items-center gap-3">
-              <img src="./img/ale.webp" alt="Foto de perfil de Alexandre" class="h-11 w-11 rounded-full object-cover">
+              <img src="./img/ednaldo.jpg" alt="Foto de perfil de Ednaldo Pereira" class="h-11 w-11 rounded-full object-cover">
               <div>
-                <p class="text-sm font-semibold">Alexandre</p>
-                <p class="text-xs text-texto-suave">Estudante</p>
+                <p class="text-sm font-semibold">Ednaldo Pereira</p>
+                <p class="text-xs text-texto-suave">Cantor</p>
               </div>
             </footer>
           </blockquote>

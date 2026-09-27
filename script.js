@@ -73,43 +73,156 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  const playerDemo = document.getElementById('playerDemo');
-  const botaoPlayDemo = document.getElementById('botaoPlayDemo');
+  const trilhoCarrossel = document.getElementById('trilhoCarrossel');
+  const setaAnterior = document.getElementById('setaAnterior');
+  const setaProxima = document.getElementById('setaProxima');
+  const dotsCarrossel = document.getElementById('dotsCarrossel');
+  const statusAudioDemo = document.getElementById('statusAudioDemo');
+  const cartoesPlayer = document.querySelectorAll('.cartao-player');
 
-  if (playerDemo && botaoPlayDemo) {
+  if (trilhoCarrossel && cartoesPlayer.length > 0) {
 
-    playerDemo.classList.add('player-pausado');
+    let slideAtual = 0;
+    const totalSlides = cartoesPlayer.length;
+    const botoesDots = dotsCarrossel
+      ? Array.from(dotsCarrossel.children)
+      : [];
 
-    botaoPlayDemo.addEventListener('click', function () {
+    function irParaSlide(indice) {
 
-      const estaPausado =
-        playerDemo.classList.contains('player-pausado');
+      slideAtual = (indice + totalSlides) % totalSlides;
 
-      if (estaPausado) {
+      trilhoCarrossel.style.transform =
+        'translateX(-' + (slideAtual * 100) + '%)';
 
-        playerDemo.classList.remove('player-pausado');
+      botoesDots.forEach(function (dot, i) {
+        const estaAtivo = i === slideAtual;
+        dot.classList.toggle('bg-secundaria', estaAtivo);
+        dot.classList.toggle('bg-borda', !estaAtivo);
+        dot.setAttribute('aria-selected', String(estaAtivo));
+      });
+    }
 
-        botaoPlayDemo.innerHTML =
-          '<i class="fa-solid fa-pause"></i>';
+    if (setaProxima) {
+      setaProxima.addEventListener('click', function () {
+        irParaSlide(slideAtual + 1);
+      });
+    }
 
-        botaoPlayDemo.setAttribute(
-          'aria-label',
-          'Pausar prévia'
-        );
+    if (setaAnterior) {
+      setaAnterior.addEventListener('click', function () {
+        irParaSlide(slideAtual - 1);
+      });
+    }
 
-      } else {
-
-        playerDemo.classList.add('player-pausado');
-
-        botaoPlayDemo.innerHTML =
-          '<i class="fa-solid fa-play"></i>';
-
-        botaoPlayDemo.setAttribute(
-          'aria-label',
-          'Tocar prévia'
-        );
-      }
+    botoesDots.forEach(function (dot, indice) {
+      dot.addEventListener('click', function () {
+        irParaSlide(indice);
+      });
     });
+
+    // Suporte a arrastar/swipe em telas de toque
+    let posicaoInicioToque = null;
+
+    trilhoCarrossel.addEventListener('touchstart', function (evento) {
+      posicaoInicioToque = evento.touches[0].clientX;
+    });
+
+    trilhoCarrossel.addEventListener('touchend', function (evento) {
+
+      if (posicaoInicioToque === null) {
+        return;
+      }
+
+      const diferenca =
+        evento.changedTouches[0].clientX - posicaoInicioToque;
+
+      if (diferenca > 40) {
+        irParaSlide(slideAtual - 1);
+      } else if (diferenca < -40) {
+        irParaSlide(slideAtual + 1);
+      }
+
+      posicaoInicioToque = null;
+    });
+
+    // Áudio de cada card do carrossel: apenas uma faixa toca por vez
+    cartoesPlayer.forEach(function (cartao) {
+
+      const audio = cartao.querySelector('.audio-demo');
+      const botaoTocar = cartao.querySelector('.botao-tocar');
+
+      if (!audio || !botaoTocar) {
+        return;
+      }
+
+      cartao.classList.add('player-pausado');
+
+      function mostrarEstadoTocando() {
+        cartao.classList.remove('player-pausado');
+        botaoTocar.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        if (statusAudioDemo) {
+          statusAudioDemo.textContent = 'Tocando prévia...';
+        }
+      }
+
+      function mostrarEstadoPausado() {
+        cartao.classList.add('player-pausado');
+        botaoTocar.innerHTML = '<i class="fa-solid fa-play"></i>';
+        if (statusAudioDemo) {
+          statusAudioDemo.textContent = '';
+        }
+      }
+
+      audio.addEventListener('play', function () {
+
+        // Garante que só uma faixa do carrossel toque por vez
+        cartoesPlayer.forEach(function (outroCartao) {
+          if (outroCartao === cartao) {
+            return;
+          }
+          const outroAudio = outroCartao.querySelector('.audio-demo');
+          if (outroAudio && !outroAudio.paused) {
+            outroAudio.pause();
+          }
+        });
+
+        mostrarEstadoTocando();
+      });
+
+      audio.addEventListener('pause', mostrarEstadoPausado);
+      audio.addEventListener('ended', mostrarEstadoPausado);
+
+      audio.addEventListener('error', function () {
+        if (statusAudioDemo) {
+          statusAudioDemo.textContent =
+            'Não foi possível carregar a prévia agora. Tente novamente mais tarde.';
+        }
+        mostrarEstadoPausado();
+      });
+
+      botaoTocar.addEventListener('click', function () {
+
+        if (audio.paused) {
+
+          const promessaPlay = audio.play();
+
+          if (promessaPlay && typeof promessaPlay.catch === 'function') {
+            promessaPlay.catch(function () {
+              if (statusAudioDemo) {
+                statusAudioDemo.textContent =
+                  'Toque no botão novamente para iniciar a prévia.';
+              }
+            });
+          }
+
+        } else {
+          audio.pause();
+        }
+      });
+    });
+
+    irParaSlide(0);
   }
 
   const formularioContato =
@@ -118,31 +231,92 @@ document.addEventListener('DOMContentLoaded', function () {
   const mensagemFormulario =
     document.getElementById('mensagemFormulario');
 
+  // ⚠️ CONFIGURAÇÃO NECESSÁRIA ANTES DE PUBLICAR:
+  // Troque a URL abaixo pelo endpoint real do seu serviço de e-mail
+  // marketing (ex: Formspree, Mailchimp, Brevo, um endpoint próprio, etc.).
+  // Enquanto o valor abaixo estiver como está, o formulário funciona em
+  // modo de demonstração local (não envia o e-mail para lugar nenhum).
+  const URL_ENDPOINT_NEWSLETTER = 'https://formspree.io/f/SEU_ID_AQUI';
+
   if (formularioContato && mensagemFormulario) {
+
+    const botaoEnviar = formularioContato.querySelector('button[type="submit"]');
+    const textoOriginalBotao = botaoEnviar ? botaoEnviar.innerHTML : '';
 
     formularioContato.addEventListener(
       'submit',
-      function (evento) {
+      async function (evento) {
 
         evento.preventDefault();
 
-        const campoNome =
-          document.getElementById('nome');
+        const campoNome = document.getElementById('nome');
+        const campoEmail = document.getElementById('email');
+        const primeiroNome = campoNome.value.split(' ')[0];
 
-        const campoEmail =
-          document.getElementById('email');
+        const emEndpointConfigurado =
+          URL_ENDPOINT_NEWSLETTER.indexOf('SEU_ID_AQUI') === -1;
 
-        const primeiroNome =
-          campoNome.value.split(' ')[0];
+        mensagemFormulario.classList.remove('text-red-400');
+        mensagemFormulario.classList.add('text-secundaria');
 
-        mensagemFormulario.textContent =
-          'Prontinho, ' +
-          primeiroNome +
-          '! Você vai receber nossas novidades em ' +
-          campoEmail.value +
-          '.';
+        if (botaoEnviar) {
+          botaoEnviar.disabled = true;
+          botaoEnviar.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+        }
 
-        formularioContato.reset();
+        try {
+
+          if (emEndpointConfigurado) {
+
+            const resposta = await fetch(URL_ENDPOINT_NEWSLETTER, {
+              method: 'POST',
+              headers: { 'Accept': 'application/json' },
+              body: new FormData(formularioContato)
+            });
+
+            if (!resposta.ok) {
+              throw new Error('Falha no envio: ' + resposta.status);
+            }
+
+          } else {
+            // Modo de demonstração: nenhum endpoint configurado ainda.
+            console.warn(
+              'Formulário em modo de demonstração: configure ' +
+              'URL_ENDPOINT_NEWSLETTER em script.js para coletar ' +
+              'e-mails de verdade.'
+            );
+            await new Promise(function (resolve) {
+              setTimeout(resolve, 600);
+            });
+          }
+
+          mensagemFormulario.textContent =
+            'Prontinho, ' +
+            primeiroNome +
+            '! Você vai receber nossas novidades em ' +
+            campoEmail.value +
+            '.';
+
+          formularioContato.reset();
+
+        } catch (erro) {
+
+          mensagemFormulario.classList.remove('text-secundaria');
+          mensagemFormulario.classList.add('text-red-400');
+
+          mensagemFormulario.textContent =
+            'Não foi possível enviar agora. Tente novamente em instantes.';
+
+          console.error('Erro ao enviar formulário de contato:', erro);
+
+        } finally {
+
+          if (botaoEnviar) {
+            botaoEnviar.disabled = false;
+            botaoEnviar.innerHTML = textoOriginalBotao;
+          }
+        }
       }
     );
   }
